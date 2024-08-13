@@ -1,21 +1,26 @@
-import React, { useState } from 'react'
-import Home from './pages/home/home'
+import React from 'react';
+import './App.css';
+import Home from './pages/home/Home';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './pages/login/Login';
 
-const App = () => {
-  const [valor,setValor] = useState(0);
-  function handleClick() {
-    setValor(valor + 1);
-  }
+function App() {
   return (
     <>
-    <Home
-    title='Componente Home'
-    description='Componente inicial que recebe props'
-    />
-    <p>O valor é: {valor}</p>
-    <button onClick={handleClick}>Adicionar 1</button>
+    <BrowserRouter>
+        <Navbar />
+          <div className='min-h-[80vh]'>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
     </>
-  )
+);
 }
-
-export default App
+export default App;

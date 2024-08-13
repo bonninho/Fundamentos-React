@@ -1,44 +1,32 @@
-import React, { useState, useEffect} from 'react'
-import './Home.css'
-import homeLogo from '../../assets/glitch-background/2098049.jpg'
+import React from 'react';
+import homeLogo from '../../assets/glitch-background/2098047.ai.png'
+import './Home.css';
 
-interface minhaProps {
-    title: string;
-    description: string;
+
+function Home() {
+    return (
+        <>
+        <div className="bg-indigo-900 flex justify-center">
+          <div className='container grid grid-cols-2 text-white'>
+            <div className="flex flex-col gap-4 items-center justify-center py-4">
+              <h2 className='text-5xl font-bold'>Seja bem vinde!</h2>
+              <p className='text-xl'>Expresse aqui seus pensamentos e opniões</p>
+  
+              <div className="flex justify-around gap-4">
+              
+                <button className='rounded bg-white text-blue-800 py-2 px-4'>Ver postagens</button>
+              </div>
+            </div>
+  
+            <div className="flex justify-center ">
+              <img src={homeLogo} alt="" className='w-2/3' />
+      
+            </div>
+          </div>
+        </div>
+      
+      </>
+    );
 }
 
-const Home = (props:minhaProps) => {
-
-    const [loggedIn,setLoggedIn] = useState(false);
-
-    const [completed, setCompleted] = useState(false);
-    const [tarefa,batatinha] = useState('');
-
-    useEffect(() => {
-        if (completed){
-            batatinha("Parabéns, você concluiu a tarefa!");
-        }
-
-    },[completed])
-
-  return (
-    <>
-    <h1 className='titulo'>{props.title}</h1>
-    <p className='paragrafo'>{props.description}</p>
-    {loggedIn ? (
-      <h1>Bem-vindo de volta!</h1>
-    ) : (
-      <button onClick={() => setLoggedIn(true)}>Logar</button>
-    )
-     }
-    <br></br>
-    <h3>{tarefa}</h3>
-    <p>Conclua a tarefa</p>
-    <button onClick={() => setCompleted(true)}>Concluir tarefa</button>
-
-    <img src= {homeLogo} className='img' alt='imagem tela inicial'></img>
-    </>
-  ) 
-}
-
-export default Home
+export default Home;
